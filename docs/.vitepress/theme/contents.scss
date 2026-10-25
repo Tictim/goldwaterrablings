@@ -1,0 +1,97 @@
+.content-block {
+  a:not(.nostyle) {
+    color: var(--link);
+
+    &:visited {
+      color: var(--link-visited);
+    }
+  }
+
+  .back {
+    font-size: 0.9em;
+
+    a {
+      font-family: var(--font-text-monospace);
+    }
+  }
+}
+
+a.nostyle {
+  color: var(--text);
+  text-decoration: none;
+}
+
+body:not(.no-mask) {
+
+  a:not(.nostyle),
+  b,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  .coolmask {
+    mask: var(--text-mask) center luminance;
+  }
+}
+
+a:not(.nostyle),
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.coolmask {
+  text-shadow: -1px 2px var(--text-shadow);
+}
+
+b {
+  font-family: var(--font-text-monospace);
+  font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 24px 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+
+  &::before {
+    content: "::";
+  }
+}
+
+hr {
+  border: none;
+  border-top: 2px dotted var(--text);
+  text-align: center;
+  overflow: visible;
+}
+
+pre {
+  overflow-x: scroll;
+  padding: 10px;
+
+  background-color: var(--transparent-bg-content);
+  border-radius: 20px;
+}

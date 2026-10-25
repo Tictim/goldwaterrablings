@@ -1,0 +1,48 @@
+body {
+  --bg: white;
+  --text: #222;
+  --text-dim: #222a;
+  --text-shadow: #eeeeeea0;
+
+  --logo: #fff;
+
+  --transparent-bg: #ffffff60;
+  --transparent-bg-sitemenu: #ffffff30;
+  --transparent-bg-content: #ffffff7f;
+
+  --link: hsl(250, 85%, 55%);
+  --link-visited: hsl(250, 85%, 65%);
+
+  --nothumb: url('/thumbnail/nothumb.png');
+
+  --font-text: 'Onest', sans-serif;
+  --font-text-monospace: 'Azeret Mono', monospace;
+}
+
+@media not print {
+  body.dark-mode {
+    --bg: #111;
+    --text: #ddd;
+    --text-dim: #ddda;
+    --text-shadow: #444;
+
+    --transparent-bg: #00000060;
+    --transparent-bg-sitemenu: #00000010;
+    --transparent-bg-content: #000000a0;
+
+    --link: hsl(250, 85%, 70%);
+    --link-visited: hsl(250, 85%, 80%);
+
+    --nothumb: url('/thumbnail/nothumbdark.png');
+  }
+}
+
+@font-face {
+  font-family: 'Onest';
+  src: url("/Onest-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: 'Azeret Mono';
+  src: url("/AzeretMono-VariableFont_wght.ttf");
+}

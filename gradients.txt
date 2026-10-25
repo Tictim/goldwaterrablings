@@ -1,0 +1,68 @@
+// pillar
+//i forgor
+
+// #6e7079
+#a5a191
+#d2bd74
+auto 1
+#a5a191
+auto 2
+#797977 2
+auto 3
+#3d4b87
+auto 1
+#293774 
+#465690
+
+// //#200d11 1
+// #723e21 1
+// auto 1
+// #682116 1
+// #723e21 1
+// #926f42 2
+// auto 2
+// #e1c790 1
+// #926f42 1
+
+// arch
+
+#a5a191 
+#797977 
+auto 4
+#3d4b87 3
+
+
+// #682116 1
+// auto
+// #723e21 1
+// #926f42 5
+// auto 2
+// #e1c790 1
+
+// arch shadow
+
+#17124e
+auto 6
+#82a3cd80
+#82a3cd00
+
+//rev. 1
+#17124e 2
+auto 4
+#17124e80
+#17124e00
+
+
+// header rev. 1
+// the actual color spread is controlled by the actual gradient
+// (imgine using gradients)
+
+#797977
+#3c4050
+
+// header rev. 2
+
+#3d4b87
+#797977 
+auto 1
+#a5a191 

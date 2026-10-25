@@ -1,0 +1,4 @@
+---
+title: 404 not found
+404: true
+---

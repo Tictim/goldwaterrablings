@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4"
+     height="256"
+     viewBox="0 0 4 256"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="c1h" gradientTransform="rotate(90 0.5 0.5)">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="50%" stop-color="#d4ceac" />
+      <stop offset="100%" stop-color="#cedbeb" />
+    </linearGradient>
+
+    <linearGradient id="c1" gradientTransform="rotate(90 0.5 0.5)">
+      <stop offset="0%" stop-color="#23316e" />
+      <stop offset="10%" stop-color="#324fad" />
+      <stop offset="30%" stop-color="#5087cc" />
+      <stop offset="50%" stop-color="#324fad" />
+      <stop offset="90%" stop-color="#5087cc" />
+      <stop offset="100%" stop-color="#23316e" />
+    </linearGradient>
+
+    <linearGradient id="c2h" gradientTransform="rotate(90 0.5 0.5)">
+      <stop offset="0%" stop-color="transparent" />
+      <stop offset="5%" stop-color="#324fad40" />
+      <stop offset="25%" stop-color="#324fad40" />
+      <stop offset="50%" stop-color="#5087cccc" />
+      <stop offset="100%" stop-color="#324fadaa" />
+    </linearGradient>
+
+    <linearGradient id="c2" gradientTransform="rotate(90 0.5 0.5)">
+      <stop offset="0%" stop-color="#17124e" />
+      <stop offset="40%" stop-color="#2a3a7e" />
+      <stop offset="80%" stop-color="#324fad" />
+      <stop offset="100%" stop-color="#2a3a7e" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0"
+        width="1"
+        height="256"
+        fill="url(#c1h)" />
+
+  <rect x="1"
+        width="1"
+        height="256"
+        fill="url(#c1)" />
+
+  <rect x="2"
+        width="1"
+        height="256"
+        fill="url(#c2h)" />
+
+  <rect x="3"
+        width="1"
+        height="256"
+        fill="url(#c2)" />
+</svg>
