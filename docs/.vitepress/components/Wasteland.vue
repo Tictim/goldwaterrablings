@@ -24,7 +24,8 @@ const CACTI = [
 const cactu = useTemplateRef('cactu')
 
 onMounted(() => {
-  if (Math.random() <= INITIAL_SPECIAL_CACTU_CHANCE) switchCactu()
+  if (navigator.userAgent !== 'Screenjesus' && Math.random() <= INITIAL_SPECIAL_CACTU_CHANCE)
+    switchCactu()
 })
 
 function switchCactu() {
@@ -36,10 +37,10 @@ function switchCactu() {
   do {
     const randomCactu = CACTI[Math.min(CACTI.length - 1, Math.trunc(Math.random() * CACTI.length))]
     newCactu = `/404/${randomCactu}.png`
-  } while (prevCactu === newCactu)
+  } while (prevCactu.endsWith(newCactu))
   cactu.value.src = newCactu
 
-  if (newCactu === 'actualfuckingcactus') {
+  if (newCactu.endsWith('actualfuckingcactus.png')) {
     cactu.value.classList.remove('too-dark')
   } else {
     cactu.value.classList.add('too-dark')
