@@ -97,19 +97,19 @@ function cycleAnimMode() {
 
       <div class="site-options">
         <input type="button" id="header-anim-toggle" style="display: none" @click="cycleAnimMode" />
-        <label id="header-anim-button" class="site-option" for="header-anim-toggle">
+        <label id="header-anim-button" class="site-option desc-container" for="header-anim-toggle">
           <div class="symbol"><span class="coolmask"></span></div>
           <div class="desc"><span class="coolmask"></span></div>
         </label>
 
         <input type="checkbox" id="dark-mode-toggle" style="display: none" v-model="darkMode" />
-        <label id="dark-mode-button" class="site-option" for="dark-mode-toggle">
+        <label id="dark-mode-button" class="site-option desc-container" for="dark-mode-toggle">
           <div class="symbol"><span class="coolmask"></span></div>
           <div class="desc"><span class="coolmask"></span></div>
         </label>
 
         <input type="checkbox" id="no-water-toggle" style="display: none" v-model="noWater" />
-        <label id="no-water-button" class="site-option" for="no-water-toggle">
+        <label id="no-water-button" class="site-option desc-container" for="no-water-toggle">
           <div class="symbol"><span class="coolmask"></span></div>
           <div class="desc"><span class="coolmask"></span></div>
         </label>
@@ -261,17 +261,10 @@ body.screenjesus .sitemenu {
     font-size: 0.8em;
     white-space: nowrap;
 
-    pointer-events: none;
-    visibility: collapse;
-
     > span {
       border: 2px dotted var(--text);
       padding: 0 5px;
     }
-  }
-
-  &:hover > .desc {
-    visibility: visible;
   }
 }
 
@@ -366,7 +359,7 @@ body:not(.no-water) {
       margin-left: 5px;
 
       pointer-events: all;
-      visibility: unset;
+      visibility: unset !important;
     }
   }
 }

@@ -95,9 +95,35 @@ onMounted(async () => {
     <Content v-else />
 
     <div class="footies" :class="{ hidden: !footiesVisible }">
-      <a class="footies-neocities-logo nostyle" href="https://neocities.org/"
-        ><img src="/neocities.png" alt="hosted by neocities"
-      /></a>
+      <div class="footies-left">
+        <div class="footies-left-container">
+          <a
+            class="nostyle desc-element github-icon"
+            href="https://github.com/Tictim/goldwaterrablings"
+            role="img"
+            aria-label="github icon"
+          ></a>
+          <div class="desc">
+            <span class="coolmask">source code</span>
+          </div>
+        </div>
+        <div class="footies-left-container">
+          <a class="nostyle desc-element" href="https://creativecommons.org/licenses/by-sa/4.0/"
+            ><img src="/by-sa.png" alt="cc by-sa"
+          /></a>
+          <div class="desc">
+            <span class="coolmask">cc by-sa</span>
+          </div>
+        </div>
+        <div class="footies-left-container">
+          <a class="nostyle desc-element" href="https://neocities.org/"
+            ><img src="/neocities.png" width="150" alt="hosted by neocities"
+          /></a>
+          <div class="desc">
+            <span class="coolmask">areyou saing that neo hosted these c-</span>
+          </div>
+        </div>
+      </div>
       <LiveCatReaction />
     </div>
   </div>
@@ -248,11 +274,58 @@ body:not(.miomode) .main {
   background-position: center bottom;
   background-repeat: repeat-x;
 
-  .footies-neocities-logo {
+  user-select: none;
+
+  .github-icon {
+    background-image: url('/GitHub_Invertocat_Black.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+  }
+
+  .footies-left {
     position: absolute;
     left: 20px;
     bottom: 20px;
-    user-select: none;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    gap: 20px;
+    overflow-x: hidden;
+  }
+
+  .footies-left-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 10px;
+
+    a,
+    img {
+      display: block;
+    }
+
+    .desc {
+      z-index: 10;
+
+      background-color: var(--transparent-bg);
+      backdrop-filter: blur(10px);
+
+      font-family: var(--font-text-monospace);
+      font-size: 0.8em;
+      white-space: nowrap;
+
+      > span {
+        border: 2px dotted var(--text);
+        padding: 0 5px;
+      }
+    }
   }
 }
 
@@ -267,5 +340,27 @@ body:not(.miomode) .main {
   min-height: 0;
   max-height: 0;
   visibility: hidden;
+}
+
+.desc-container {
+  > .desc {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &:not(:hover) > .desc {
+    visibility: hidden;
+  }
+}
+
+.desc-element {
+  ~ .desc {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &:not(:hover) ~ .desc {
+    visibility: hidden;
+  }
 }
 </style>

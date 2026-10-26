@@ -18,7 +18,7 @@ onMounted(() => {
     :class="variation == null ? undefined : 'var-' + variation"
   >
     <!-- href="https://neocities.org/" -->
-    <div class="live-cat-reaction-box">
+    <div class="live-cat-reaction-box desc-element">
       <div class="live-cat-reaction-title">
         <span>LIVE </span>
         <div class="live-cat-reaction-img"></div>
@@ -28,7 +28,7 @@ onMounted(() => {
         <!-- <span class="coolmask">#hostedbyneocities</span> -->
       </div>
     </div>
-    <div class="live-cat-reaction-credit-box">
+    <div class="live-cat-reaction-credit-box desc">
       <span class="live-cat-reaction-credit coolmask">car id: <br /></span>
     </div>
   </div>
@@ -92,19 +92,12 @@ onMounted(() => {
         text-shadow: -1px 2px var(--text-shadow);
       }
     }
-
-    &:not(:hover) ~ .live-cat-reaction-credit-box {
-      visibility: hidden;
-    }
   }
 
   > .live-cat-reaction-credit-box {
     z-index: 10;
     background-color: var(--transparent-bg);
     backdrop-filter: blur(2px);
-
-    pointer-events: none;
-    user-select: none;
 
     > .live-cat-reaction-credit {
       display: block;
