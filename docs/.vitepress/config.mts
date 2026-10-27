@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url'
-import { defineConfig } from 'vitepress'
+import { defineConfig, HeadConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -26,6 +26,7 @@ export default defineConfig({
   },
 
   head: [
+    ['meta', { property: 'og:site_name', content: 'goldwaterramblings' }],
     ['meta', { name: 'darkreader-lock' }],
     [
       'link',
@@ -55,4 +56,40 @@ export default defineConfig({
     ],
     ['manifest', { href: '/site.webmanifest' }],
   ],
+
+  transformHead(ctx) {
+    function canon(relativePath: string) {
+      return new URL(relativePath, 'https://goldwaterramblings.neocities.org/').href
+    }
+
+    const head: HeadConfig[] = []
+    head.push(['meta', { property: 'og:url', content: canon(ctx.pageData.relativePath) }])
+
+    const title = ctx.title.replace(' | goldwaterramblings', '')
+    head.push(['meta', { property: 'og:title', content: title }])
+    head.push(['meta', { property: 'og:description', content: ctx.description }])
+
+    if (ctx.pageData.filePath.startsWith('things/')) {
+      head.push(['meta', { property: 'og:type', content: 'article' }])
+
+      const thumbnail = ctx.pageData.frontmatter['thumbnail']
+      if (typeof thumbnail === 'string') {
+        head.push(['meta', { property: 'og:image', content: canon(thumbnail) }])
+      }
+
+      const timestamp = ctx.pageData.frontmatter['timestamp']
+      if (timestamp !== null) {
+        head.push(['meta', { property: 'article:published_time', content: timestamp }])
+      }
+    }
+
+    return head
+  },
+
+  transformHtml(code) {
+    return code.replace(
+      '<html',
+      '<html prefix="og: https://ogp.me/ns#\narticle: https://ogp.me/ns/article#"'
+    )
+  },
 })
