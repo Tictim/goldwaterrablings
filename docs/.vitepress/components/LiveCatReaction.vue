@@ -17,16 +17,13 @@ onMounted(() => {
     class="live-cat-reaction nostyle"
     :class="variation == null ? undefined : 'var-' + variation"
   >
-    <!-- href="https://neocities.org/" -->
     <div class="live-cat-reaction-box desc-element">
       <div class="live-cat-reaction-title">
         <span>LIVE </span>
         <div class="live-cat-reaction-img"></div>
         <span> REACTION</span>
       </div>
-      <div class="live-cat-reaction-img live-cat-reaction-main-img">
-        <!-- <span class="coolmask">#hostedbyneocities</span> -->
-      </div>
+      <div class="live-cat-reaction-img live-cat-reaction-main-img"></div>
     </div>
     <div class="live-cat-reaction-credit-box desc">
       <span class="live-cat-reaction-credit coolmask">car id: <br /></span>
