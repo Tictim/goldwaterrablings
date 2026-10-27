@@ -157,13 +157,13 @@ onMounted(() => {
   }
 }
 
-.live-cat-reaction.var-3 {
+.live-cat-reaction.var-2 {
   .live-cat-reaction-img {
-    background-image: url('/cars/wuh.png');
+    background-image: url('/cars/missy.png');
   }
 
   .live-cat-reaction-credit::after {
-    content: 'this is not car,i dont know whates doing here';
+    content: "ghosti's car missy";
   }
 }
 </style>
