@@ -67,9 +67,12 @@ const props = defineProps<{
     bottom: 20px;
     right: 0;
 
+    height: 800px;
+
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: flex-end;
 
     gap: 20px;
     overflow-x: hidden;
@@ -109,6 +112,12 @@ const props = defineProps<{
   .footies-neocities-logo {
     transform: scale(0.8);
     transform-origin: bottom left;
+  }
+
+  .footies-left-entry .desc {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%) translateY(-10px);
   }
 }
 
