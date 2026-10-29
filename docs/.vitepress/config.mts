@@ -1,6 +1,8 @@
 import { fileURLToPath } from 'node:url'
 import { defineConfig, HeadConfig } from 'vitepress'
 
+const EXCLUDED_FILES: string[] = ['test.md', 'test/**']
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'goldwaterramblings',
@@ -45,6 +47,7 @@ export default defineConfig({
     resolve: {
       alias: {
         '@components': fileURLToPath(new URL('./components', import.meta.url)),
+        '@data': fileURLToPath(new URL('./data', import.meta.url)),
       },
     },
   },
@@ -116,4 +119,6 @@ export default defineConfig({
       '<html prefix="og: https://ogp.me/ns#\narticle: https://ogp.me/ns/article#"'
     )
   },
+
+  srcExclude: process.env.NODE_ENV === 'development' ? [] : EXCLUDED_FILES,
 })

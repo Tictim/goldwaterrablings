@@ -30,6 +30,14 @@ const title = computed(() => {
   return is404.value ? NOT_FOUND_TITLE : titleValue
 })
 
+const backlink = computed<readonly [href: string, title: string]>(() => {
+  const p = page.value.filePath
+  if (p.startsWith('things/')) return ['/things', '::things']
+  if (p.startsWith('tools/')) return ['/tools', '::tools']
+  if (p.startsWith('test/')) return ['/test', '::test']
+  return ['/', '::home']
+})
+
 onMounted(async () => {
   if (page.value.isNotFound) {
     page.value.title = NOT_FOUND_TITLE
@@ -82,10 +90,7 @@ onMounted(async () => {
 
       <div v-if="$frontmatter.contentBlock !== 'none'" class="content-block">
         <span class="main-title-backlink">
-          ↩
-          <a v-if="page.filePath.startsWith('things/')" href="/things">::things</a>
-          <a v-else-if="page.filePath.startsWith('tools/')" href="/tools">::tools</a>
-          <a v-else href="/">::home</a>
+          ↩ <a :href="backlink[0]">{{ backlink[1] }}</a>
         </span>
         <div class="main-title">
           <div class="main-title-header coolmask">::{{ title }}</div>
