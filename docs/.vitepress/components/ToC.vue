@@ -162,7 +162,7 @@ const { page } = useData()
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 1;
+    z-index: 15;
 
     background-color: var(--transparent-bg);
     backdrop-filter: blur(2px);
