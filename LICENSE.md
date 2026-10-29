@@ -6,7 +6,7 @@ Unless stated otherwise,
 ### Additional credits:
 
 - `404/actualfuckingcactus.png` by David Clark @ PublicDomainPictures.net (https://www.publicdomainpictures.net/en/view-image.php?image=148796&picture=cactus-in-desert)
+- `AzeretMono-VariableFont_wght.ttf` by The Azeret Project Authors (https://github.com/displaay/azeret)
 - `by-sa.png` by https://creativecommons.org/
 - `GitHub_Invertocat_Black.png` by GitHub, Inc.
-- `AzeretMono-VariableFont_wght.ttf` by The Azeret Project Authors (https://github.com/displaay/azeret)
 - `Onest-VariableFont_wght.ttf` by The Onest Project Authors (https://github.com/googlefonts/onest)
