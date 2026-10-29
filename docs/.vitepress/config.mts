@@ -27,7 +27,7 @@ export default defineConfig({
         h.attrPush(['data-header-id', slug])
 
         const a = new state.Token('html_inline', '', 0)
-        a.content = `<a class="header-anchor nostyle" href="#${slug}"></a>`
+        a.content = `<a class="header-anchor nostyle" href="#${slug}" tabindex="-1"></a>`
 
         const div = new state.Token('html_inline', '', 0)
         div.content = `<div id="${slug}" class="ifuckinghatewebdev"></div>`
