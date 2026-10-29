@@ -3,6 +3,7 @@ import { useData } from 'vitepress'
 import { computed, onMounted } from 'vue'
 import BgCanvas from '../components/BgCanvas.vue'
 import Footies from '../components/Footies.vue'
+import ToC from '../components/ToC.vue'
 import { maskTest } from '../components/maskTest.ts'
 import SiteMenu from '../components/SiteMenu.vue'
 import { NO_TITLE, timestampToText } from '../components/things.ts'
@@ -69,32 +70,38 @@ onMounted(async () => {
 
   <SiteMenu />
 
-  <div class="main">
-    <div
-      v-if="$frontmatter.contentBlock !== 'none'"
-      class="content-block"
-      :class="{ 'tool-block': $frontmatter.contentBlock === 'tool' }"
-    >
-      <span class="back">
-        ↩
-        <a v-if="page.filePath.startsWith('things/')" href="/things">::things</a>
-        <a v-else-if="page.filePath.startsWith('tools/')" href="/tools">::tools</a>
-        <a v-else href="/">::home</a>
-      </span>
-      <div class="main-title">
-        <div class="main-title-header coolmask">::{{ title }}</div>
-        <div v-if="timestamp" class="main-title-timestamp">date of birth {{ timestamp }}</div>
-      </div>
-      <hr />
-      <template v-if="is404">
-        <p>the server is confused. i am confused. are you confused yet? here's the west.</p>
-        <Wasteland />
-      </template>
-      <Content v-else />
-    </div>
-    <Content v-else />
+  <div
+    class="main"
+    :class="{
+      'no-footies': !footiesVisible,
+      'main-tool': $frontmatter.contentBlock === 'tool',
+    }"
+  >
+    <div class="content-and-navbar-block">
+      <ToC v-if="page.headers.length > 0" />
 
-    <Footies :visible="footiesVisible" />
+      <div v-if="$frontmatter.contentBlock !== 'none'" class="content-block">
+        <span class="main-title-backlink">
+          ↩
+          <a v-if="page.filePath.startsWith('things/')" href="/things">::things</a>
+          <a v-else-if="page.filePath.startsWith('tools/')" href="/tools">::tools</a>
+          <a v-else href="/">::home</a>
+        </span>
+        <div class="main-title">
+          <div class="main-title-header coolmask">::{{ title }}</div>
+          <div v-if="timestamp" class="main-title-timestamp">date of birth {{ timestamp }}</div>
+        </div>
+        <hr />
+        <template v-if="is404">
+          <p>the server is confused. i am confused. are you confused yet? here's the west.</p>
+          <Wasteland />
+        </template>
+        <Content v-else />
+      </div>
+      <div v-else><Content /></div>
+    </div>
+
+    <Footies />
   </div>
 </template>
 
@@ -155,21 +162,14 @@ body:not(.no-mask) .header-block > .header {
   position: relative;
   width: 100%;
   // height: 500px;
-  overflow: auto;
+  // overflow: auto;
   flex: 1 1 auto;
 
   display: flex;
   flex-direction: column;
 }
 
-body.miomode .main {
-  background-image: url('/thumbnail/xeno3.png');
-  background-size: 100% auto;
-  background-repeat: repeat;
-  background-position: center;
-}
-
-body:not(.miomode) .main {
+body:not(.miomode) .main.no-footies {
   background-image: url('/b1.svg'), url('/b2.svg');
   background-position:
     center top,
@@ -177,19 +177,36 @@ body:not(.miomode) .main {
   background-repeat: repeat-x, repeat;
 }
 
-.content-block {
-  width: min(800px, 100vw);
-  margin: 200px auto 0 auto;
-  // margin-top: 200px;
-  padding: 40px;
-  background-color: var(--transparent-bg-content);
-  backdrop-filter: blur(10px);
-  border-radius: 40px;
+.content-and-navbar-block {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: start;
+  gap: 20px;
+}
 
+.content-block {
+  padding: 40px;
   display: flex;
   flex-direction: column;
 
-  &.tool-block {
+  background-color: var(--transparent-bg-content);
+  backdrop-filter: blur(10px);
+  border-radius: 40px;
+}
+
+.main:not(.main-tool) {
+  .content-and-navbar-block {
+    margin: 200px auto;
+  }
+
+  .content-block {
+    width: min(800px, 100vw);
+    // margin-top: 200px;
+  }
+}
+
+.main.main-tool {
+  .content-and-navbar-block {
     position: absolute;
     left: 0;
     right: 0;
@@ -198,6 +215,14 @@ body:not(.miomode) .main {
 
     width: min(max(800px, calc(min(100vw, 1920px) - 40px)), 100vw);
     margin: 20px auto;
+  }
+
+  .content-block {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 
     > *:last-child {
       flex-grow: 1;
@@ -216,8 +241,13 @@ body:not(.miomode) .main {
   }
 }
 
-.back {
+.main-title-backlink {
+  font-size: 0.9em;
   user-select: none;
+
+  a {
+    font-family: var(--font-text-monospace);
+  }
 }
 
 .main-title-header {
@@ -233,27 +263,5 @@ body:not(.miomode) .main {
   text-align: end;
 
   white-space: nowrap;
-}
-
-.desc-container {
-  > .desc {
-    pointer-events: none;
-    user-select: none;
-  }
-
-  &:not(:hover) > .desc {
-    visibility: hidden;
-  }
-}
-
-.desc-element {
-  ~ .desc {
-    pointer-events: none;
-    user-select: none;
-  }
-
-  &:not(:hover) ~ .desc {
-    visibility: hidden;
-  }
 }
 </style>

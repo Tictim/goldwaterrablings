@@ -1,0 +1,13 @@
+diff --git a/node_modules/vitepress/dist/node/chunk-BYTgXTwz.js b/node_modules/vitepress/dist/node/chunk-BYTgXTwz.js
+index 94bb6c8..133d929 100644
+--- a/node_modules/vitepress/dist/node/chunk-BYTgXTwz.js
++++ b/node_modules/vitepress/dist/node/chunk-BYTgXTwz.js
+@@ -3261,7 +3261,7 @@ const htmlEscapeMap = {
+ 		let title = resolveTitleFromToken(nextToken, {
+ 			shouldAllowHtml,
+ 			shouldEscapeText
+-		}), slug = token.attrGet("id") ?? slugify$1(title);
++		}), slug = token.attrGet("id") ?? token.attrGet("data-header-id") ?? slugify$1(title);
+ 		push({
+ 			level: headerLevel,
+ 			title: format?.(title) ?? title,

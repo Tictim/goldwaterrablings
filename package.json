@@ -9,13 +9,16 @@
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "postinstall": "patch-package",
+    "patch-package": "patch-package"
   },
   "devDependencies": {
     "@types/three": "^0.186.0",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-vue": "^10.11.1",
+    "patch-package": "^8.0.1",
     "prettier": "^3.9.10",
     "sass": "^1.105.2",
     "sass-embedded": "^1.105.2",

@@ -1,13 +1,9 @@
 <script lang="ts" setup>
 import LiveCatReaction from './LiveCatReaction.vue'
-
-const props = defineProps<{
-  visible: boolean
-}>()
 </script>
 
 <template>
-  <div class="footies" :class="{ hidden: !props.visible }">
+  <div class="footies">
     <div class="footies-left">
       <div class="footies-left-entry">
         <a
@@ -43,12 +39,9 @@ const props = defineProps<{
 
 <style lang="scss">
 .footies {
-  min-height: 1200px;
+  position: relative;
+  min-height: 1000px;
   flex-grow: 1;
-
-  background-image: url('/b3.svg');
-  background-position: center bottom;
-  background-repeat: repeat-x;
 
   user-select: none;
 
@@ -108,6 +101,12 @@ const props = defineProps<{
   }
 }
 
+@media print {
+  .footies {
+    display: none;
+  }
+}
+
 @media screen and (width < 600px) {
   .footies-neocities-logo {
     transform: scale(0.8);
@@ -121,9 +120,11 @@ const props = defineProps<{
   }
 }
 
-.footies.hidden {
-  min-height: 0;
-  max-height: 0;
-  visibility: hidden;
+.main.no-footies {
+  .footies {
+    min-height: 0;
+    max-height: 0;
+    visibility: hidden;
+  }
 }
 </style>

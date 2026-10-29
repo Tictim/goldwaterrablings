@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useData } from 'vitepress'
 import { onMounted, ref, watch } from 'vue'
 
 type AnimMode = 'full' | 'limited' | 'none'
@@ -8,6 +9,16 @@ const BASE_ID = 'site-option'
 const STORAGE_ANIM_MODE_ID = BASE_ID + '-anim-mode'
 const STORAGE_DARK_MODE_ID = BASE_ID + '-dark-mode'
 const STORAGE_WATER_ID = BASE_ID + '-water'
+
+const LINKS: ReadonlyArray<readonly [href: string, title: string, path: string]> = [
+  ['/', 'home', 'index.md'],
+  ['/things', 'things', 'things.md'],
+  ['/tools', 'tools', 'tools.md'],
+  ['/me', 'me', 'me.md'],
+  ['/contacts', 'contacts', 'contacts.md'],
+]
+
+const { page } = useData()
 
 const animMode = ref<AnimMode>('full')
 const darkMode = ref<boolean>(false)
@@ -88,11 +99,14 @@ function cycleAnimMode() {
 
     <div class="sitemenu-list">
       <div class="sitemenu-links">
-        <a class="coolmask" href="/">home</a>
-        <a class="coolmask" href="/things">things</a>
-        <a class="coolmask" href="/tools">tools</a>
-        <a class="coolmask" href="/me">me</a>
-        <a class="coolmask" href="/contacts">contacts</a>
+        <a
+          v-for="[href, title, path] in LINKS"
+          class="coolmask"
+          :href="href"
+          :class="{ current: page.relativePath === path }"
+        >
+          {{ title }}
+        </a>
       </div>
 
       <div class="site-options">
@@ -180,6 +194,10 @@ body.screenjesus .sitemenu {
 
     &::before {
       content: '::';
+    }
+
+    &.current::before {
+      content: '>::';
     }
   }
 }
@@ -335,6 +353,12 @@ body:not(.no-water) {
 
   #no-water-button > .desc > span::before {
     content: 'water';
+  }
+}
+
+@media print {
+  .sitemenu {
+    display: none;
   }
 }
 

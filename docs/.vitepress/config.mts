@@ -11,6 +11,30 @@ export default defineConfig({
 
   markdown: {
     emoji: false,
+    headers: {
+      level: [1, 2],
+    },
+    anchor: {
+      level: [1, 2],
+      permalink(slug, options, state, index) {
+        const h = state.tokens[index]!!
+        if (h.attrs) {
+          const idIndex = h.attrs.findIndex(([key]) => key === 'id')
+          if (idIndex >= 0) h.attrs.splice(idIndex, 1)
+        }
+        h.attrPush(['data-header-id', slug])
+
+        const a = new state.Token('html_inline', '', 0)
+        a.content = `<a class="header-anchor nostyle" href="#${slug}"></a>`
+
+        const div = new state.Token('html_inline', '', 0)
+        div.content = `<div id="${slug}" class="ifuckinghatewebdev"></div>`
+
+        state.tokens.splice(index + 2, 0, a, div)
+      },
+
+      tabIndex: false,
+    },
   },
 
   cleanUrls: true,
@@ -78,7 +102,7 @@ export default defineConfig({
       }
 
       const timestamp = ctx.pageData.frontmatter['timestamp']
-      if (timestamp !== null) {
+      if (timestamp != null) {
         head.push(['meta', { property: 'article:published_time', content: timestamp }])
       }
     }

@@ -1,32 +1,4 @@
 @use './reset.scss';
 @use './theme.scss';
-@use './options.scss';
+@use './shared.scss';
 @use './contents.scss';
-
-body {
-  color: var(--text);
-  background: var(--bg);
-  font-family: var(--font-text);
-}
-
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.deck {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-
-  margin-top: 60px;
-  min-height: 0;
-  min-width: 0;
-}
-
-@media screen and (width < 600px) {
-  .deck {
-    grid-template-columns: 1fr;
-  }
-}

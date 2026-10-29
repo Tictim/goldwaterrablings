@@ -1,9 +1,0 @@
-body {
-  --logo-mask: url("/logoMask.gif");
-  --text-mask: url("/textMask.gif");
-}
-
-body.less-anims {
-  --logo-mask: url("/logoMaskStill.png");
-  --text-mask: url("/textMaskStill.png");
-}
