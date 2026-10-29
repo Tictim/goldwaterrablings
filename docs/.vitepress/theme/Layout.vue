@@ -183,6 +183,8 @@ body:not(.miomode) .main.no-footies {
 }
 
 .content-and-navbar-block {
+  max-width: 100%;
+
   display: flex;
   flex-direction: row-reverse;
   align-items: start;
