@@ -190,14 +190,18 @@ body.screenjesus .sitemenu {
     border-bottom: 2px dotted var(--text);
     padding: 0 5px;
 
+    white-space: nowrap;
     pointer-events: all;
 
     &::before {
       content: '::';
+      font-weight: bold;
     }
 
-    &.current::before {
-      content: '>::';
+    &.current::after {
+      content: ' here';
+      color: var(--text-dim);
+      font-size: 0.8em;
     }
   }
 }
